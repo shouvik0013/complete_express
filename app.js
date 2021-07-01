@@ -33,11 +33,16 @@ app.use('/add-product', (req, res, next) => {
 });
 
 
-app.use('/product', (req, res, next) => {
+// app.use('/product', (req, res, next) => {
+//     console.log(req.body);  // by default req(request) does not parse the incoming request body
+//     res.redirect('/');
+// });
+
+
+app.post('/product', (req, res, next) => {
     console.log(req.body);  // by default req(request) does not parse the incoming request body
     res.redirect('/');
 });
-
 
 // here single slash '/' means that every route starts with slash
 // if we try to load google.com -> it implies domain-name/
