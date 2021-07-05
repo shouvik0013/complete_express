@@ -10,7 +10,7 @@ const shopRoutes = require('./routes/shop');    // shopRoutes is also a valid mi
 
 const app = express();  // remember express is a function
 // previous line initializes an object named app
-// in app constant expressJS stores many logic
+// in the constant app expressJS stores many logic
 
 
 app.use(bodyParser.urlencoded({extended: false}));   // this line registers a middleware
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));   // this line registers a mi
 // })
 
 
-app.use(adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 // app.use('/add-product', (req, res, next) => {
@@ -72,5 +72,13 @@ app.use(shopRoutes);
 app.use((req, res, next) => {
     res.status(404).send('<h1>Page not found</h1>');
 })
+
+// createServer() expects a request handler
+// app is a valid request handler 
+// so we passed app as an request handler
+
+// const server = http.createServer(app);
+
+// server.listen(3000);
 
 app.listen(3000);   // this line does the same thing as previous two lines
