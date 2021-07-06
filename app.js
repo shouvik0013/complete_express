@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express'); // here express returns a function
 // and we store it in 'express' constant
 
@@ -70,7 +71,8 @@ app.use(shopRoutes);
 // server.listen(3000);
 
 app.use((req, res, next) => {
-    res.status(404).send('<h1>Page not found</h1>');
+    // res.status(404).send('<h1>Page not found</h1>');
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 })
 
 // createServer() expects a request handler
