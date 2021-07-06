@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 
 const router = express.Router();    // returns a mini express app
-
+const rootDir = require('../util/path');
 
 router.get('/', (req, res, next) => {
     console.clear();    // clearing the previous output
@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 
     // __dirname holds the absolute path of the routes folder
     // means the absolute path of the file where it is used
-    res.sendFile(path.join(__dirname, '../', 'views', 'shop.html'));
+    res.sendFile(path.join(rootDir, 'views', 'shop.html'));
 
 });
 
