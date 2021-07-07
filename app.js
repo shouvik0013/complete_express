@@ -3,18 +3,27 @@ const express = require('express'); // here express returns a function
 // and we store it in 'express' constant
 
 // importing body-parser
-const bodyParser = require('body-parser');  
+const bodyParser = require('body-parser');
 
-const adminRoutes = require('./routes/admin');  // adminRoutes is also a valid middleware function
-const shopRoutes = require('./routes/shop');    // shopRoutes is also a valid middleware function
+const adminRoutes = require('./routes/admin'); // adminRoutes is also a valid middleware function
+const shopRoutes = require('./routes/shop'); // shopRoutes is also a valid middleware function
 
 
-const app = express();  // remember express is a function
+const app = express(); // remember express is a function
 // previous line initializes an object named app
 // in the constant app expressJS stores many logic
 
 
-app.use(bodyParser.urlencoded({extended: false}));   // this line registers a middleware
+// The __dirname in a node script returns the path of the folder
+// where the current JavaScript file resides.
+app.use(express.static(path.join(__dirname, 'public')));
+// this line gives public access to the specified directory
+// when anyone wants to access the path it would not
+// go through express middleware instead we can directly
+// access the content of the specified path
+
+
+app.use(bodyParser.urlencoded({ extended: false })); // this line registers a middleware
 // and calling next() so that the control can go to next middlewares
 // most importantly it parses the request body
 
@@ -83,4 +92,4 @@ app.use((req, res, next) => {
 
 // server.listen(3000);
 
-app.listen(3000);   // this line does the same thing as previous two lines
+app.listen(3000); // this line does the same thing as previous two lines
